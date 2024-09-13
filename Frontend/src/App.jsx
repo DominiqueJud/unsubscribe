@@ -2,13 +2,14 @@ import { useState } from 'react'
 import UnsubscribeForm from './components/UnsubscribeForm'
 import logo from './WGW-Logo.jpg'
 import ResubscribeForm from './components/ResubscribeForm'
-
+import Notification from './components/Notification'
 
 
 
 
 function App() {
   const [count, setCount] = useState(0)
+  const [notification,setNotification] = useState(null)
 
 
   return (
@@ -18,11 +19,12 @@ function App() {
           </img>
       </div>
     </header>
+    <Notification notification={notification}/>
       <h2>Wenn sie keine weiteren E-Mails von uns erhalten möchten, können Sie sich unten abmelden.<br />
         Dann werden sie nicht mehr von uns per E-Mail kontaktiert.</h2>
         <div className='forms-container'>
-      <UnsubscribeForm />
-      <ResubscribeForm />
+      <UnsubscribeForm setNotification={setNotification}/>
+      <ResubscribeForm setNotification={setNotification}/>
       </div>
     </>
   )

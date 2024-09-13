@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Language Selector</title>
+    </head>
+    <body>
+    <script>
+        const changeLanguage=()=>{
+        const language=window.navigator.language
+        console.log(language)
+        if(language.includes('de')){
+            return
+        }
+        if(language.includes('en')){
+            window.location.replace('http://wgw-ict.ch/en')
+            return
+        }
+        if(language.includes('fr')){
+            window.location.replace('http://wgw-ict.ch/fr')
+            return
+        }
+        if(language.includes('it')){
+            window.location.replace('http://wgw-ict.ch/it')
+        }
+        if(language.includes('es')){
+            window.location.replace('http://wgw-ict.ch/es')
+        }
+        window.location.replace('http://wgw-ict.ch/en')
+        }
+       changeLanguage()
+    </script>
+    </body>
+</html>

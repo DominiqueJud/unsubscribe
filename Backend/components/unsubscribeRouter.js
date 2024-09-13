@@ -1,12 +1,13 @@
 const unsubscribeRouter=require('express').Router()
 const mysql= require('mysql')
+require('dotenv').config()
 
 
 const config={
-    host: 'lx66.hoststar.hosting',
-    user: 'ch356066_dominique',
-    password: '7j3Ujird9HWar65mtnp1%',
-    database: 'ch356066_wgw'
+    host: process.env.SQL_HOST,
+    user: process.env.SQL_USER,
+    password: process.env.SQL_PASSWORD,
+    database: process.env.SQL_DATABASE
   }
 
 const db=mysql.createConnection(config)
@@ -18,6 +19,9 @@ db.connect((error)=>{
     else{console.log('Connected to MySQL DB')}
 })
 
+setInterval(()=>{
+    db.query('SELECT 1')
+},5000)
 
 const isEmailCorrectFormat=(email)=>{
     const emailPattern= /\S+@\S+[.]\S+/

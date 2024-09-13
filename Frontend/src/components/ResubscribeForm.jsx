@@ -1,12 +1,14 @@
 import {useState} from 'react';
 import axios from 'axios'
 
-const ResubscribeForm = ()=>{
+const ResubscribeForm = ({setNotification})=>{
     const [email, setEmail]= useState('ihre E-Mail')
     const handleSubmit=async (event)=>{
         event.preventDefault()
         console.log(`/api/unsubscribe/${email}`)
         const response= await axios.delete(`/api/unsubscribe/${email}`)
+        setNotification(`${email} wurde erfolgreich wieder angemeldet`)
+        setTimeout(()=>setNotification(null),5000)
         console.log(response)
         setEmail('')
     }
